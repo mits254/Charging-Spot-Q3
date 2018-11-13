@@ -2,40 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, Dimensions,
 TouchableOpacity, Button } from 'react-native';
 import { Icon } from 'native-base';
-import Login from './login';
 
 const { width: WIDTH } = Dimensions.get('window');
-class Profile extends Component {
-    constructor(props){
-        super(props)
-        this.state= {
-            showPass : true,
-            press: false
-        }
-    }
-    showPass =() => {
-        if(this.state.press ==  false) {
-            this.setState({ showPass :false , press: true})      
-        } else {
-            this.setState({ showPass: true, press: false })
-        }
-    }
-    static navigationOptions = {
-        tabBarIcon: ({ tintcolor }) => (
-            <Icon name="person" style={{ color: tintcolor }} />
-        )
-    }
 
+class login extends Component {
     render() {
         return (
-            //background
-            <ImageBackground style={styles.backgroundContainer} source={require('../front.jpg')}>
-                <View style={{ flex: 1, justifyContent: "flex-start", alignItems: 'center', paddingTop: 60 }}>
-                    <View style={{ backgroundColor: 'white', height: 50, width: 200, alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
-                        <Text style={styles.logoText}> Charging Spot</Text>
-                    </View>
-                </View>
-                {/* user-login */}
+            <View style={styles.backgroundContainer}>
                 <View style={{marginTop:10,marginBottom: 50}}>
                     <Icon name={'ios-person-outline'} size={28} color={'black'}
                         style={styles.inputIcon} />
@@ -63,35 +36,22 @@ class Profile extends Component {
                         </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.text}>Create My Profile</Text>
+                    <Text style={styles.text}>Login</Text>
                 </TouchableOpacity>
-                <View style={{marginBottom:50}}>
-                    <Text>
-                       ---------- OR ----------
-                    </Text>
-
-                    <Button title='I have an Account' onPress={() => navigate('Main')}/> 
-                </View>
-
-            </ImageBackground>
+            </View>
         )
     }
 }
-
-
-
 const styles = StyleSheet.create({
     backgroundContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         width: null,
-        height: null
+        height: null,
+        backgroundColor : 'white'
     },
-    logoText: {
-        fontWeight: "bold",
-        fontSize: 26,
-    },
+    
     input: {
         width: WIDTH - 55,
         height: 45,
@@ -131,4 +91,4 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     }
 });
-export default Profile;
+export default login;

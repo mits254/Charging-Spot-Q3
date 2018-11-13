@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
-import { Icon } from 'native-base';
-import { TabNavigator } from 'react-navigation';
+//import { View, Text, StyleSheet} from 'react-native';
+//import { Icon } from 'native-base';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Profile from './AppTabNavigator/Profile';
 import Moretab from './AppTabNavigator/Moretab';
 import Explore from './AppTabNavigator/Explore';
@@ -18,7 +18,7 @@ class MainScreen extends Component {
     }
 }
 
-const AppTabNavigator = TabNavigator({
+const AppTabNavigator = createBottomTabNavigator({
     Explore : { 
         screen : Explore
     },
@@ -43,11 +43,5 @@ const AppTabNavigator = TabNavigator({
     }
 })
 
-const styles = StyleSheet.create({
-    container :{
-        flex : 1,
-        alignItems : 'center',
-        justifyContent : 'center'
-    }
-});
+
 export default MainScreen;

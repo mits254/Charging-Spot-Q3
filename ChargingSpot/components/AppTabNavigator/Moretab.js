@@ -4,7 +4,7 @@ import { Icon } from 'native-base';
 
 class Moretab extends Component {
     static navigationOptions = {
-        header : null,
+       
         tabBarIcon :({tintcolor}) => (
             <Icon name="ios-more" style={{color:tintcolor}} />
         )
