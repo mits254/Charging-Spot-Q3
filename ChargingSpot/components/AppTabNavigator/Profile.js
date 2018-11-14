@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, Dimensions,
-TouchableOpacity, Button } from 'react-native';
+TouchableOpacity, Button, Alert} from 'react-native';
 import { Icon } from 'native-base';
 
 
 const { width: WIDTH } = Dimensions.get('window');
 class Profile extends Component {
+
     constructor(props){
         super(props)
         this.state= {
             showPass : true,
-            press: false
+            press: false, 
+            InputUserName: '',
+            InputPass: ''
         }
     }
+    CheckTextInputIsEmpty = () =>{
+        const {InputUserName} = this.state ;
+        const {InputPass} = this.state ;
+        
+
+        if (InputUserName == '' || InputPass == ''){
+          Alert.alert(' Please Enter All the Values !!')
+        } else {  
+            const { navigate } = this.props.navigation;
+                navigate('SignUp') 
+        } 
+    }      
     showPass =() => {
         if(this.state.press ==  false) {
             this.setState({ showPass :false , press: true})      
@@ -40,7 +55,8 @@ class Profile extends Component {
                         style={styles.input}
                         placeholder={'Username'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' />
+                        underlineColorAndroid='transparent' 
+                        onChangeText={InputUserName => this.setState({InputUserName})}/>
                 </View>
 
                 {/* password-input */}
@@ -52,14 +68,15 @@ class Profile extends Component {
                         placeholder={'Password'}
                         secureTextEntry={this.state.showPass}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' />
+                        underlineColorAndroid='transparent'
+                        onChangeText={InputPass => this.setState({InputPass})} />
                         <TouchableOpacity style={styles.btneye} 
                         onPress={this.showPass.bind(this)}>
                             <Icon name={this.state.showPass == false ? 'ios-eye-outline' : 'ios-eye-off-outline'} 
                             size={26} color={'white'}/>
                         </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnLogin} onPress={() => navigate('SignUp')}>
+                <TouchableOpacity style={styles.btnLogin} onPress ={this.CheckTextInputIsEmpty}>
                     <Text style={styles.text} >Create My Profile</Text>
                 </TouchableOpacity>
                 <View style={{marginBottom:50}}>

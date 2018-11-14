@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, Dimensions,
-TouchableOpacity, Button } from 'react-native';
+TouchableOpacity, Button, Alert } from 'react-native';
 import { Icon } from 'native-base';
 
 const { width: WIDTH } = Dimensions.get('window');
@@ -10,16 +10,43 @@ class Login extends Component {
         super(props)
         this.state= {
             showPass : true,
-            press: false
+            press: false,
+            InputUserName :'',
+            InputPass: ''
         }
     }
+    CheckTextInputIsEmpty = () =>{
+        const {InputUserName} = this.state ;
+        const {InputPass} = this.state ;
+        
+
+        if (InputUserName == '' || InputPass == ''){
+          Alert.alert(' Please Enter All the Values !!')
+        } else {  
+            fetch('https://ios-gl-app.firebaseio.com/users.json')
+          .then(res => res.json())
+          .then(parsedRes =>{
+            console.log(parsedRes);
+            for(const key in parsedRes){
+                if(parsedRes[key].UserName === InputUserName && parsedRes[key].Password === InputPass ){
+                    const { navigate } = this.props.navigation;
+                    navigate('Explore') 
+                } else {
+                    Alert.alert(' Please Enter Valid Username and Password !!')
+                }
+            }
+            
+          })
+            
+        } 
+    }      
     showPass =() => {
         if(this.state.press ==  false) {
             this.setState({ showPass :false , press: true})      
         } else {
             this.setState({ showPass: true, press: false })
         }
-    }
+    } 
     render() {
         return (
             <View style={styles.backgroundContainer}>
@@ -31,7 +58,8 @@ class Login extends Component {
                         style={styles.input}
                         placeholder={'Username'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' />
+                        underlineColorAndroid='transparent' 
+                        onChangeText={InputUserName => this.setState({InputUserName})}/>
                 </View>
 
                 {/* password-input */}
@@ -41,6 +69,7 @@ class Login extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Password'}
+                        onChangeText={InputPass => this.setState({InputPass})}
                         secureTextEntry={this.state.showPass}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
                         underlineColorAndroid='transparent' />
@@ -50,7 +79,7 @@ class Login extends Component {
                             size={26} color={'rgba(255, 255, 255, 1)'}/>
                         </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnLogin}>
+                <TouchableOpacity style={styles.btnLogin} onPress ={this.CheckTextInputIsEmpty}>
                     <Text style={styles.text}>Login</Text>
                 </TouchableOpacity>
             </View>

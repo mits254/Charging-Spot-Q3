@@ -16,6 +16,7 @@ class Explore extends Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={{ flex: 1 }}>
@@ -33,10 +34,11 @@ class Explore extends Component {
                     <View style={styles.mainContainer}>
                     <View style={{flex: 1}}>
                     <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}> 
+                    
                     <Category imageUri={require('../../assets/map.gif')}
                              title="Find the nearest charging station on our map."
-                             name="Map"/>
-
+                             name="Map" onClick={() => navigate('Map')}/>
+                    
                     <Category imageUri={require('../../assets/person.png')}
                              title="Create a Free Charging-Spot account to stay up to date with the latest charging stations installations."
                              name="Create Account"/>

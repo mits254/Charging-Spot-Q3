@@ -9,7 +9,6 @@ import Explore from './AppTabNavigator/Explore';
 import Login from './AppTabNavigator/login';
 import userLocations from '../components/userLocation';
 import { Icon } from 'native-base';
-import SingUp from './AppTabNavigator/SingnUp';
 import SignUp from './AppTabNavigator/SingnUp';
 
 class MainScreen extends Component {
@@ -29,7 +28,8 @@ const  StackNavigatorConfig ={
 const ProfileNav = createStackNavigator({
     Pro : {screen : Profile},
     Login : {screen : Login},
-    SingUp : {screen : SignUp}
+    SignUp : {screen : SignUp},
+    Explore : {screen: Explore}
   }, StackNavigatorConfig);
 
  const AppTabNavigator = createBottomTabNavigator({
