@@ -4,6 +4,7 @@ import {createStackNavigator} from 'react-navigation';
 import FrontPage from './components/frontPage';
 import userLocations from './components/userLocation';
 import MainScreen from './components/MainScreen';
+//import UsersMap from './components/UsersMap';
 
 
 const App = createStackNavigator({

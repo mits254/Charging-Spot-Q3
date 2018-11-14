@@ -34,7 +34,7 @@ class FrontPage extends Component {
             onPress={() =>
                 navigate('Map')  }/>
            </View>
-           <Button title ="later"  onPress={() => navigate('Main')} /> 
+           <Button title ="Later"  onPress={() => navigate('Main')} /> 
            </View>
            </ImageBackground>
             </View>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, Dimensions,
 TouchableOpacity, Button } from 'react-native';
 import { Icon } from 'native-base';
-import Login from './login';
+
 
 const { width: WIDTH } = Dimensions.get('window');
 class Profile extends Component {
@@ -20,13 +20,10 @@ class Profile extends Component {
             this.setState({ showPass: true, press: false })
         }
     }
-    static navigationOptions = {
-        tabBarIcon: ({ tintcolor }) => (
-            <Icon name="person" style={{ color: tintcolor }} />
-        )
-    }
+    
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             //background
             <ImageBackground style={styles.backgroundContainer} source={require('../front.jpg')}>
@@ -62,15 +59,15 @@ class Profile extends Component {
                             size={26} color={'white'}/>
                         </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.text}>Create My Profile</Text>
+                <TouchableOpacity style={styles.btnLogin} onPress={() => navigate('SignUp')}>
+                    <Text style={styles.text} >Create My Profile</Text>
                 </TouchableOpacity>
                 <View style={{marginBottom:50}}>
                     <Text>
                        ---------- OR ----------
                     </Text>
 
-                    <Button title='I have an Account' onPress={() => navigate('Main')}/> 
+                    <Button title='I have an Account' onPress={() => navigate('Login')}/> 
                 </View>
 
             </ImageBackground>

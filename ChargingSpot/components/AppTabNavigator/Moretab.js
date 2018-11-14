@@ -13,7 +13,8 @@ class Moretab extends Component {
     render() {
         return(
             <View style={styles.container}>
-            <Text>Moretab</Text>
+            <Text style={{fontSize: 15, paddingLeft:10}}>Add Station</Text>
+            
             </View>
         )
     }
@@ -24,8 +25,8 @@ class Moretab extends Component {
 const styles = StyleSheet.create({
     container :{
         flex : 1,
-        alignItems : 'center',
-        justifyContent : 'center'
+       
+        justifyContent : 'flex-start'
     }
 });
 export default Moretab;

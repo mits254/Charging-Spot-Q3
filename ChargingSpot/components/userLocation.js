@@ -2,12 +2,20 @@ import React from 'react';
 import fetchLocation from './fetchLocation';
 import UsersMap from './UsersMap';
 import {StyleSheet, Text, View, Button} from 'react-native';
+import { Icon } from 'native-base';
 
 export default class userLocations extends React.Component{
       state = {
         userLocation : null,
         usersPlaces :[]
       }
+      static navigationOptions = {
+
+        tabBarIcon: ({ tintcolor }) => (
+            <Icon name="ios-map" style={{ color: tintcolor }} />
+        )
+
+    }
       getUserLocationHandler = () => {
         navigator.geolocation.getCurrentPosition(position => {
           this.setState({
@@ -50,8 +58,13 @@ export default class userLocations extends React.Component{
           .catch(err => console.log(err));
       }
       render() {
+        if (this.state.userLocation == null){
+            this.getUserLocationHandler();
+        }
+
+
         return (
-        //   <AppStackNavigator screenProps={{onPressButton: this.getUserLocationHandler}} />
+
           <View style={styles.container}>
           {/* <View style= {{marginBottom: 20}}>
           <Button title="Get User Place" onPress={this.getUserPlacesHandler}/>
@@ -63,7 +76,7 @@ export default class userLocations extends React.Component{
            
         );
       }
-    }
+}
 
     const styles = StyleSheet.create({
         container: {
@@ -71,6 +84,7 @@ export default class userLocations extends React.Component{
           justifyContent: 'flex-start',
           alignItems: 'center',
           backgroundColor: '#F5FCFF',
+          paddingTop:-10
         },
         
       });

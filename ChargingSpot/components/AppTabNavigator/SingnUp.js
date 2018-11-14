@@ -5,53 +5,55 @@ import { Icon } from 'native-base';
 
 const { width: WIDTH } = Dimensions.get('window');
 
-class Login extends Component {
-    constructor(props){
-        super(props)
-        this.state= {
-            showPass : true,
-            press: false
-        }
-    }
-    showPass =() => {
-        if(this.state.press ==  false) {
-            this.setState({ showPass :false , press: true})      
-        } else {
-            this.setState({ showPass: true, press: false })
-        }
-    }
+class SignUp extends Component {
+    
+    
     render() {
         return (
             <View style={styles.backgroundContainer}>
             <Text style={{justifyContent:'flex-start', paddingTop:0,fontSize:24,fontWeight:'bold'}} >LOGIN</Text>
-                <View style={{marginTop:10,marginBottom: 30}}>
-                    <Icon name={'ios-person-outline'} size={28} color={'black'}
-                        style={styles.inputIcon} />
+                <View style={{marginTop:10,marginBottom: 30}}>      
                     <TextInput
                         style={styles.input}
-                        placeholder={'Username'}
+                        placeholder={'Full Name'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
                         underlineColorAndroid='transparent' />
+                </View>
+            
+                <View style={{marginBottom:40}}>  
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Address'}
+                        placeholderTextColor={'rgba(255, 255, 255, 1)'}
+                        underlineColorAndroid='transparent' />                
                 </View>
 
-                {/* password-input */}
-                <View style={{marginBottom:40}}>
-                    <Icon name={'ios-lock-outline'} size={28} color={'black'}
-                        style={styles.inputIcon} />
+                <View style={{marginBottom:40}}>  
                     <TextInput
                         style={styles.input}
-                        placeholder={'Password'}
-                        secureTextEntry={this.state.showPass}
+                        placeholder={'Car Model'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' />
-                        <TouchableOpacity style={styles.btneye} 
-                        onPress={this.showPass.bind(this)}>
-                            <Icon name={this.state.showPass == false ? 'ios-eye-outline' : 'ios-eye-off-outline'} 
-                            size={26} color={'rgba(255, 255, 255, 1)'}/>
-                        </TouchableOpacity>
+                        underlineColorAndroid='transparent' />                
                 </View>
+                
+                <View style={{marginBottom:40}}>  
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Manufacture Year'}
+                        placeholderTextColor={'rgba(255, 255, 255, 1)'}
+                        underlineColorAndroid='transparent' />                
+                </View>
+
+                <View style={{marginBottom:40}}>  
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Wallet Amount'}
+                        placeholderTextColor={'rgba(255, 255, 255, 1)'}
+                        underlineColorAndroid='transparent' />                
+                </View>
+
                 <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.text}>Login</Text>
+                    <Text style={styles.text}>SignUp</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -85,12 +87,7 @@ const styles = StyleSheet.create({
         top: 8,
         left: 37,
     },
-    btneye :{
-        position:'absolute',
-        top: 8,
-        right: 37, 
-        color:'white'
-    },
+    
     btnLogin:{
       width : WIDTH -55,
       height: 45,
@@ -106,4 +103,4 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     }
 });
-export default Login;
+export default SignUp;

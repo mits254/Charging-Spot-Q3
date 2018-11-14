@@ -31,8 +31,8 @@ class Explore extends Component {
                         </View>
                     </View>
                     <View style={styles.mainContainer}>
-                    <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}>
-                      <View style={styles.scrollViewContainer}>
+                    <View style={{flex: 1}}>
+                    <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}> 
                     <Category imageUri={require('../../assets/map.gif')}
                              title="Find the nearest charging station on our map."
                              name="Map"/>
@@ -48,9 +48,8 @@ class Explore extends Component {
                     <Category imageUri={require('../../assets/questions.jpg')}
                              title="Do you have any qustions for our team ?"
                              name="Qustions ?"/>
-
-                      </View>
                     </ScrollView>
+                    </View>
                     </View>
                 </View>
             </SafeAreaView>
