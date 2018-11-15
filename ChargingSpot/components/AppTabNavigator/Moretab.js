@@ -21,7 +21,9 @@ class Moretab extends Component {
             <Text style={{paddingTop: 20}}>
               App Information
             </Text>
+            <TouchableOpacity onPress= {()=> navigate('Guide')}>
             <Tab name='Charging Guide' icon ='ios-book-outline' />
+            </TouchableOpacity>
             <Tab name='Give Feedback' icon ='ios-chatboxes-outline' />
             <Tab name='More Info' icon='ios-information-circle-outline'/>
             </View>

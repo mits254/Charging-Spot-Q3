@@ -53,7 +53,7 @@ class Explore extends Component {
 
                     <Category imageUri={require('../../assets/questions.jpg')}
                              title="Do you have any qustions for our team ?"
-                             name="Qustions ?"/>
+                             name="Questions ?"/>
                     </ScrollView>
                     </View>
                     </View>
