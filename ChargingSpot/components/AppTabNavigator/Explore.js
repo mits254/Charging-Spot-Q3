@@ -7,6 +7,12 @@ const {height, width} = Dimensions.get('window');
 vw = width / 100;
 vh = height / 100;
 class Explore extends Component {
+    constructor(props){
+        super(props)
+        this.state= {
+            input : ''
+        }
+    }
     static navigationOptions = {
 
         tabBarIcon: ({ tintcolor }) => (
@@ -28,12 +34,16 @@ class Explore extends Component {
                             <Icon name='ios-search' size={20} style={{ marginRight: 10 }} />
                             <TextInput placeholder='Search'
                                 placeholderTextColor='grey'
-                                style={{ flex: 1, fontWeight: '700' }} />
+                                style={{ flex: 1, fontWeight: '700' }} 
+                                onChangeText={(value) => this.setState({input :value})} />
+                                <Text> {this.state.input}</Text>
                         </View>
+                        
                     </View>
                     <View style={styles.mainContainer}>
                     <View style={{flex: 1}}>
                     <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}> 
+                    
                     <TouchableOpacity onPress={() => navigate('Map')}>
                     <Category imageUri={require('../../assets/map.gif')}
                              title="Find the nearest charging station on our map."

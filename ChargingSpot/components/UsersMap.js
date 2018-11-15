@@ -1,28 +1,29 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions, Image,TouchableHighlight, Text } from 'react-native';
+import { View, StyleSheet, Image,TouchableHighlight, Text } from 'react-native';
 import MapView from 'react-native-maps';
+import openMap from 'react-native-open-maps';
 
 const usersMap = props =>{
     let userLocationMarker = null;
-
+     
    if(props.userLocation){
     userLocationMarker = <MapView.Marker coordinate={props.userLocation}/>;
    }
    const usersMarkers = props.usersPlaces.map(userPlace => 
+
    <MapView.Marker coordinate={userPlace} key ={userPlace.id}>
    <Image source={require('../assets/pin.png')} style={{ width: 40, height: 40 }}/>
    <MapView.Callout tooltip style={{flex:1}}>
-                                      <TouchableHighlight>
+                                      <TouchableHighlight  >
                                       <View style={{ flex: 1, backgroundColor: 'lightgrey', paddingTop: 20, paddingLeft:10,paddingRight:5,width:300, height:100,flexDirection:'row' }}>
                                        
                                         <Image source={require('../assets/pin.png')} style={{ width: 60, height: 60 }}/>
                                         <View>
-                                        <Text style={{ fontSize: 28, fontWeight: 'bold',paddingTop:-2 }}>
+                                        <Text style={{ fontSize: 20, fontWeight: 'bold',paddingTop:-2 }}>
                                          {userPlace.name}
                                         </Text>
                                         
-                                       
-                                        <Text>{userPlace.street}, {userPlace.city}, {userPlace.zip}</Text>
+                                        <Text>{userPlace.street}, {userPlace.city},{"\n"} {userPlace.zip}</Text>
                                         <Text> {userPlace.port} ports</Text>
                                         </View>
                                      </View>

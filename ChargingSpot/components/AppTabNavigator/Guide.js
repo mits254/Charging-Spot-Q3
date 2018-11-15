@@ -6,7 +6,7 @@ class Guide extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={{ fontWeight: 'bold', fontSize: 26, paddingTop: 50, }}> Electric Vehicle Charging Guide </Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 26, paddingTop: 50,alignItems:'center' }}> Electric Vehicle Charging Guide </Text>
                 <Image source={require('../../assets/books.jpeg')} style={{ width: 80, height: 80, marginTop: 25, marginBottom: 25 }} />
 
                 <Text style={{ fontSize: 18, paddingTop: 22, paddingLeft:3,paddingRight:3 }}>

@@ -91,61 +91,61 @@ class Stations extends Component {
                         style={styles.input}
                         placeholder={'Station Name'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent'
+                       
                         onChangeText={InputName => this.setState({InputName})} />
                 </View>
-                <View style={{marginTop:10,marginBottom: 30}}>      
+                <View style={{marginBottom: 30}}>      
                     <TextInput
                         style={styles.input}
                         placeholder={'Public or Home'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent'
+                        
                         onChangeText={InputType => this.setState({InputType})} />
                 </View>
 
-                <View style={{marginTop:10,marginBottom: 30}}>      
+                <View style={{marginBottom: 30}}>      
                     <TextInput
                         style={styles.input}
                         placeholder={'Street'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent'
+                       
                         onChangeText={InputStreet => this.setState({InputStreet})} />
                 </View>
             
-                <View style={{marginBottom:40}}>  
+                <View style={{marginBottom:30}}>  
                     <TextInput
                         style={styles.input}
                         placeholder={'City'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent'
+                      
                         onChangeText={InputCity => this.setState({InputCity})} />                
                 </View>
 
-                <View style={{marginBottom:40}}>  
+                <View style={{marginBottom:30}}>  
                     <TextInput
                         style={styles.input}
                         placeholder={'Zip Code'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent'
+                        
                         onChangeText={InputZip => this.setState({InputZip})} />                
                 </View>
                 
-                <View style={{marginBottom:40}}>  
+                <View style={{marginBottom:30}}>  
                     <TextInput
                         style={styles.input}
                         placeholder={'Number of Ports'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' 
+                        
                         onChangeText={InputPort => this.setState({InputPort})} />                
                                      
                 </View>
 
-                <View style={{marginBottom:40}}>  
+                <View style={{marginBottom:30}}>  
                     <TextInput
                         style={styles.input}
                         placeholder={'Price per port'}
                         placeholderTextColor={'rgba(255, 255, 255, 1)'}
-                        underlineColorAndroid='transparent' 
+                        
                         onChangeText={InputPrice => this.setState({InputPrice})} />                
                                        
                 </View>
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(255, 255, 255, 1)',
       justifyContent: 'center',
       marginTop: -10,
-      marginBottom: 40
+      marginBottom: 30
     },
     text: {
       color:"black",
