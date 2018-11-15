@@ -1,8 +1,10 @@
 import React from 'react';
 import fetchLocation from './fetchLocation';
 import UsersMap from './UsersMap';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, Dimensions} from 'react-native';
 import { Icon } from 'native-base';
+const window = Dimensions.get('window');
+const { width, height }  = window;
 
 export default class userLocations extends React.Component{
       state = {
@@ -25,16 +27,16 @@ export default class userLocations extends React.Component{
               latitudeDelta: 0.0622,
               longitudeDelta: 0.0421
             }
-          }); 
-          fetch('https://ios-gl-app.firebaseio.com/places.json',{
-            method : 'POST',
-            body : JSON.stringify({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            })
           })
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
+        //   fetch('https://ios-gl-app.firebaseio.com/places.json',{
+        //     method : 'POST',
+        //     body : JSON.stringify({
+        //       latitude: position.coords.latitude,
+        //       longitude: position.coords.longitude,
+        //     })
+        //   })
+        //   .then(res => console.log(res))
+        //   .catch(err => console.log(err));
         }, err => console.log(err));
       }
       getUserPlacesHandler = () =>{
@@ -60,18 +62,22 @@ export default class userLocations extends React.Component{
       render() {
         if (this.state.userLocation == null){
             this.getUserLocationHandler();
+            this.getUserPlacesHandler();
+            console.log(this.state.userLocation);
         }
 
 
         return (
 
           <View style={styles.container}>
+          
           {/* <View style= {{marginBottom: 20}}>
           <Button title="Get User Place" onPress={this.getUserPlacesHandler}/>
           </View> */}
             {/* <FetchLocation onGetLocation ={this.getUserLocationHandler} /> */}
             <UsersMap userLocation = {this.state.userLocation} 
-            usersPlaces = {this.state.usersPlaces}/>
+            usersPlaces = {this.state.usersPlaces} onPress={this.getUserLocationHandler}/>
+            
           </View>
            
         );

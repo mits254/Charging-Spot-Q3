@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import MapView from 'react-native-maps';
 
 const usersMap = props =>{
@@ -9,7 +9,10 @@ const usersMap = props =>{
     userLocationMarker = <MapView.Marker coordinate={props.userLocation}/>;
    }
    const usersMarkers = props.usersPlaces.map(userPlace => 
-   <MapView.Marker coordinate={userPlace} key ={userPlace.id}/>);
+   <MapView.Marker coordinate={userPlace} key ={userPlace.id}>
+   <Image source={require('../assets/pin.png')} style={{ width: 40, height: 40 }}/>
+   </MapView.Marker>
+   );
     return (
       <View style={styles.mapContainer}>
           <MapView 
@@ -18,7 +21,7 @@ const usersMap = props =>{
             longitude: -97.7431,
             latitudeDelta: 0.0622,
             longitudeDelta: 0.0421,
-          }}
+          }} 
           region = {props.userLocation}
           style={styles.map}>
           {userLocationMarker}
@@ -29,13 +32,14 @@ const usersMap = props =>{
 }
 const styles = StyleSheet.create ({
     mapContainer : {
-        width : '100%',
-        height : 200,
-        marginTop : 20
+        flex: 1,
+        alignSelf:'stretch',
+        marginTop : 0
     },
     map : {
         width : '100%',
-        height : '100%'
+        height : '100%',
+        
     }
 })
 

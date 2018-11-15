@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TextInput, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TextInput, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 import Category from './CategoryComponents/Category';
 
@@ -34,18 +34,22 @@ class Explore extends Component {
                     <View style={styles.mainContainer}>
                     <View style={{flex: 1}}>
                     <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}> 
-                    
+                    <TouchableOpacity onPress={() => navigate('Map')}>
                     <Category imageUri={require('../../assets/map.gif')}
                              title="Find the nearest charging station on our map."
-                             name="Map" onClick={() => navigate('Map')}/>
-                    
+                             name="Map" />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('Profile')}>
                     <Category imageUri={require('../../assets/person.png')}
                              title="Create a Free Charging-Spot account to stay up to date with the latest charging stations installations."
                              name="Create Account"/>
-
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('Guide')}>
                     <Category imageUri={require('../../assets/guide.png')}
                              title="How long does it take to charge a vehicle? Want to learn more about it? Read our simple guide to laern more about charging !!."
                              name="Charging Guide"/>
+
+                    </TouchableOpacity>         
 
                     <Category imageUri={require('../../assets/questions.jpg')}
                              title="Do you have any qustions for our team ?"
