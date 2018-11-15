@@ -10,17 +10,19 @@ class Stations extends Component {
     constructor(props){
         super(props)
         this.state= {
+            InputName:'',
             InputStreet: '',
             InputCity: '',
             InputZip: '',
             InputPrice: '',
             InputPort: '',
             InputType: '',
-            
-
+            InputLat: '',
+            InputLng: ''          
         }
     }
     CheckTextInputIsEmpty = () =>{
+        const {InputName} = this.state ;
         const {InputStreet} = this.state ;
         const {InputCity} = this.state ;
         const {InputZip} = this.state ;
@@ -28,27 +30,51 @@ class Stations extends Component {
         const {InputPort} = this.state ;
         const {InputType} = this.state ;
         
+        
 
-        if (InputStreet == '' || InputCity == '' || InputZip == '' || InputPrice == '' || InputPort == '' ||InputType == ''){
+        if (InputName == '' || InputStreet == '' || InputCity == '' || InputZip == '' || InputPrice == '' || InputPort == '' ||InputType == ''){
           Alert.alert(' Please Enter All the Values !!')
-        } else {  
+        } else {
+            const searchObj = {
+                location:{
+                    street: this.state.InputStreet,
+                    city : this.state.InputCity, 
+                    state : 'tx',
+                    postalCode: this.state.InputZip, 
+                    adminArea1:'US'}
+            };
+
+            const Obj = JSON.stringify(searchObj);
+           
+            fetch(`http://open.mapquestapi.com/geocoding/v1/address?key=fFZ9OV8SYuLlVEGlsW8C8u76ExEvBgCL&json=${Obj}`)
+                .then(res => res.json())
+                .then(parsedRes =>{
+                  console.log(parsedRes.results[0].locations[0].latLng);
+                  this.setState({InputLat : parsedRes.results[0].locations[0].latLng.lat});
+                  this.setState({InputLng : parsedRes.results[0].locations[0].latLng.lng});
+               
             fetch('https://ios-gl-app.firebaseio.com/stations.json',{
                 method : 'POST',
                 body : JSON.stringify({
+                    Name: InputName,
                  Street : InputStreet,
                  City : InputCity,
                  Zip : InputZip,
                  Price : InputPrice,
                  Port: InputPort,
                  Type : InputType,
-                 
+                 Latitude : this.state.InputLat,
+                 Longitude : this.state.InputLng    
                 })
               })
               .then(res => console.log(res))
               .catch(err => console.log(err));
-            };
+              Alert.alert(' You have successfully created a station !!')
             const { navigate } = this.props.navigation;
             navigate('Explore')
+        });
+            };
+            
         
     }      
     
@@ -59,6 +85,15 @@ class Stations extends Component {
         return (
             <View style={styles.backgroundContainer}>
             <Text style={{justifyContent:'flex-start', paddingTop:0,fontSize:24,fontWeight:'bold'}} > Add Stations</Text>
+                
+            <View style={{marginTop:10,marginBottom: 30}}>      
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Station Name'}
+                        placeholderTextColor={'rgba(255, 255, 255, 1)'}
+                        underlineColorAndroid='transparent'
+                        onChangeText={InputName => this.setState({InputName})} />
+                </View>
                 <View style={{marginTop:10,marginBottom: 30}}>      
                     <TextInput
                         style={styles.input}

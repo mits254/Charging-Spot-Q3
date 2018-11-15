@@ -40,15 +40,21 @@ export default class userLocations extends React.Component{
         }, err => console.log(err));
       }
       getUserPlacesHandler = () =>{
-        fetch('https://ios-gl-app.firebaseio.com/places.json')
+        fetch('https://ios-gl-app.firebaseio.com/stations.json')
           .then(res => res.json())
           .then(parsedRes =>{
             console.log(parsedRes);
             const placesArray = [];
             for(const key in parsedRes) {
               placesArray.push({
-                latitude :parsedRes[key].latitude,
-                longitude :parsedRes[key].longitude,
+                latitude :parsedRes[key].Latitude,
+                longitude :parsedRes[key].Longitude,
+                name :parsedRes[key].Name,
+                port :parsedRes[key].Port,
+                cost :parsedRes[key].Price,
+                street:parsedRes[key].Street,
+                city:parsedRes[key].City,
+                zip :parsedRes[key].Zip,
                 id: key
               });
             }

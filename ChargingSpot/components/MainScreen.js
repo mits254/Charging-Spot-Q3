@@ -22,45 +22,5 @@ class MainScreen extends Component {
         )
     }
 }
-const  StackNavigatorConfig ={
-    headerMode: 'none',
-}
-const ProfileNav = createStackNavigator({
-    Pro : {screen : Profile},
-    Login : {screen : Login},
-    SignUp : {screen : SignUp},
-    Explore : {screen: Explore}
-  }, StackNavigatorConfig);
-
- const AppTabNavigator = createBottomTabNavigator({
-    Explore : { 
-        screen : Explore
-    },
-    Map : {
-      screen : userLocations
-    },
-    Profile: {screen : ProfileNav, 
-        navigationOptions :{
-            tabBarLabel: 'Profile',
-            tabBarIcon:({tintcolor}) => (
-                <Icon name="person" style={{ color: tintcolor }} />
-            )     
-        } 
-    },
-    More : {
-      screen : Moretab
-    }
-},{
-    animationEnabled: true,
-    swipeEnabled: true,
-    tabBarPosition: "bottom",
-    tabBarOptions: {
-        activeTintColor:'#000',
-        inactiveTintColor:'#d1cece',
-        showIcon: 'true',
-        showLabel: 'true',
-    }
-})
-
 
 export default MainScreen;
