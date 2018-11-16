@@ -12,10 +12,10 @@ ChargingSpot brings electric vehicle charging to more people and places than eve
 
 [![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://youtu.be/s5pRy_bY_VA)
 
-<img src="ChargingSpot/assets/ login.png"/>
+<img src=" login.png"/>
 
 
-<img src="ChargingSpot/assets/map.png"/>
+<img src="map.png"/>
 
 
 ### BEST FEATURE
