@@ -25,7 +25,7 @@ class Profile extends Component {
           Alert.alert(' Please Enter All the Values !!')
         } else {  
             const { navigate } = this.props.navigation;
-                navigate('SignUp') 
+                navigate('SignUp', this.state) 
         } 
     }      
     showPass =() => {
@@ -76,7 +76,7 @@ class Profile extends Component {
                             size={26} color={'white'}/>
                         </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnLogin} onPress ={this.CheckTextInputIsEmpty}>
+                <TouchableOpacity style={styles.btnLogin} onPress ={this.CheckTextInputIsEmpty} >
                     <Text style={styles.text} >Create My Profile</Text>
                 </TouchableOpacity>
                 <View style={{marginBottom:50}}>

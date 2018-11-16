@@ -69,7 +69,6 @@ export default class userLocations extends React.Component{
         if (this.state.userLocation == null){
             this.getUserLocationHandler();
             this.getUserPlacesHandler();
-            console.log(this.state.userLocation);
         }
 
 

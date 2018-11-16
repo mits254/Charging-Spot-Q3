@@ -26,16 +26,19 @@ class Login extends Component {
             fetch('https://ios-gl-app.firebaseio.com/users.json')
           .then(res => res.json())
           .then(parsedRes =>{
-            console.log(parsedRes);
+            //console.log(parsedRes);
+            let login = 0;
             for(const key in parsedRes){
                 if(parsedRes[key].UserName === InputUserName && parsedRes[key].Password === InputPass ){
                     const { navigate } = this.props.navigation;
-                    navigate('Explore') 
-                } else {
-                    Alert.alert(' Please Enter Valid Username and Password !!')
-                }
-            }
-            
+                    login = 1;
+                    navigate('Explore',this.state) 
+                } 
+            };
+            if (login === 0) {
+                Alert.alert(' Please Enter Valid Username and Password !!')
+            };
+
           })
             
         } 

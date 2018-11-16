@@ -33,6 +33,8 @@ class SignUp extends Component {
                   fetch('https://ios-gl-app.firebaseio.com/users.json',{
                     method : 'POST',
                     body : JSON.stringify({
+                     UserName : this.props.navigation.state.params.InputUserName,
+                     Password : this.props.navigation.state.params.InputPass,
                      Name : InputName,
                      Email : InputEmail,
                      Address : InputAddress,
@@ -46,10 +48,11 @@ class SignUp extends Component {
                   .catch(err => console.log(err));
                 };
                 const { navigate } = this.props.navigation;
-                navigate('Explore')
+                navigate('Explore', this.state)
 
     }
     render() {
+        //console.log(this.props.navigation.state.params);
         return (
             <View style={styles.backgroundContainer}>
             <Text style={{justifyContent:'flex-start', paddingTop:0,fontSize:24,fontWeight:'bold'}} > CREATE YOUR PROFILE</Text>

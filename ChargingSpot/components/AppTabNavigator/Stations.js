@@ -71,7 +71,7 @@ class Stations extends Component {
               .catch(err => console.log(err));
               Alert.alert(' You have successfully created a station !!')
             const { navigate } = this.props.navigation;
-            navigate('Explore')
+            navigate('More')
         });
             };
             

@@ -23,6 +23,7 @@ class Explore extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        console.log(this.props.navigation.state.params);
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={{ flex: 1 }}>
@@ -40,6 +41,7 @@ class Explore extends Component {
                         </View>
                         
                     </View>
+                    
                     <View style={styles.mainContainer}>
                     <View style={{flex: 1}}>
                     <ScrollView  contentContainerStyle={{flexGrow : 1, justifyContent : 'center'}}> 

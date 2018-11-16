@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image,TouchableHighlight, Text } from 'react-native';
+import { View, StyleSheet, Image,TouchableHighlight, Text, Linking } from 'react-native';
 import MapView from 'react-native-maps';
 import openMap from 'react-native-open-maps';
 
@@ -14,7 +14,7 @@ const usersMap = props =>{
    <MapView.Marker coordinate={userPlace} key ={userPlace.id}>
    <Image source={require('../assets/pin.png')} style={{ width: 40, height: 40 }}/>
    <MapView.Callout tooltip style={{flex:1}}>
-                                      <TouchableHighlight  >
+                                      <TouchableHighlight onPress={()=>{Linking.openURL(`http://maps.apple.com/maps?daddr=${userPlace.latitude},${userPlace.longitude}`)}} >
                                       <View style={{ flex: 1, backgroundColor: 'lightgrey', paddingTop: 20, paddingLeft:10,paddingRight:5,width:300, height:100,flexDirection:'row' }}>
                                        
                                         <Image source={require('../assets/pin.png')} style={{ width: 60, height: 60 }}/>
